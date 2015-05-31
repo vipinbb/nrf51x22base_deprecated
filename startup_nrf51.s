@@ -155,8 +155,8 @@ Reset_Handler:
     cmp    r4, r3
     blt    .flash_to_ram_loop
 .flash_to_ram_loop_end:
-   /* ldr    r0, =SystemInit
-    blx    r0 */
+    ldr    r0, =SystemInit
+    blx    r0
     ldr    r0, =main
     bx     r0
     .pool
