@@ -40,8 +40,8 @@ CORTEX_M0_CC_FLAGS      = -mthumb -mcpu=cortex-m0 -march=armv6-m
 ######################################################################################
 PROJECT           = demo
 LINKER_SCRIPT     = ./gcc_nrf51_s310.ld
-PROJECT_INC_PATH  = -I./ -I./antble
-PROJECT_SRC_PATH  = ./ ./antble
+PROJECT_INC_PATH  = -I. -Iantble/s310/s310_nrf51422_2.0.0/s310_nrf51422_2.0.0_API/include/
+PROJECT_SRC_PATH  = ./ antble/s310/s310_nrf51422_2.0.0/s310_nrf51422_2.0.0_API/include/
 PROJECT_LIB_PATHS = -L.
 PROJECT_OUTPUT = _build/
 
@@ -70,9 +70,9 @@ OBJS_AS = $(addprefix $(PROJECT_OUTPUT), $(SRCS_AS:.s=.o))
 ###############################################################################
 all: makefolder  $(OBJS) $(OBJS_AS) $(HEX)
 
-rebuild: clean all
+rebuild: clean cleanup all
 
-clean:
+cleanup:
 		rm -R _build
 
 $(HEX): $(OBJS) $(OBJS_AS)
