@@ -72,25 +72,25 @@ all: makefolder  $(OBJS) $(OBJS_AS) $(HEX)
 rebuild: clean cleanup all
 
 cleanup:
-		rm -R _build
+	rm -R _build
 
 $(HEX): $(OBJS) $(OBJS_AS)
-			$(LD) $(CORTEX_M0_CC_FLAGS)$(LDFLAGS) $(OBJS_AS) $(OBJS) -o $(ELF)
-			$(OBJCOPY) -Oihex $(ELF) $(HEX)
-			$(OBJCOPY) -Obinary $(ELF) $(BIN)
-			$(SIZE) $(ELF)
+	$(LD) $(CORTEX_M0_CC_FLAGS)$(LDFLAGS) $(OBJS_AS) $(OBJS) -o $(ELF)
+	$(OBJCOPY) -Oihex $(ELF) $(HEX)
+	$(OBJCOPY) -Obinary $(ELF) $(BIN)
+	$(SIZE) $(ELF)
 
 size: $(ELF)
-			$(SIZE) $(ELF)
+	$(SIZE) $(ELF)
 
 $(PROJECT_OUTPUT)%.o: %.c
-							$(CC) $(CFLAGS) $< -o $@
+		      $(CC) $(CFLAGS) $< -o $@
 
 $(PROJECT_OUTPUT)%.o: %.s
-								$(AS) $< -o $@
+		      $(AS) $< -o $@
 
 makefolder:
-			mkdir $(PROJECT_OUTPUT)
+	mkdir $(PROJECT_OUTPUT)
 
 -include $(DEPS)
 
