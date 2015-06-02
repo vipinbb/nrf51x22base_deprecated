@@ -27,7 +27,7 @@ CC       = $(GCC_BIN)arm-none-eabi-gcc
 CPP      = $(GCC_BIN)arm-none-eabi-g++
 LD       = $(GCC_BIN)arm-none-eabi-gcc
 OBJCOPY  = $(GCC_BIN)arm-none-eabi-objcopy
-SIZE	   = $(GCC_BIN)arm-none-eabi-size
+SIZE	 = $(GCC_BIN)arm-none-eabi-size
 
 
 ######################################################################################
