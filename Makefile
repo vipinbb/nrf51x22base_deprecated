@@ -39,8 +39,8 @@ CORTEX_M0_CC_FLAGS      = -mthumb -mcpu=cortex-m0 -march=armv6-m
 # PROJECT Configuration
 ######################################################################################
 PROJECT           = demo
-LINKER_SCRIPT     = ./gcc_nrf51_s310_xxac.ld
-PROJECT_INC_PATH  = -I. -Is310_nrf51422_2.0.0/s310_nrf51422_2.0.0_API/include/ -Ihal/
+LINKER_SCRIPT     = ./linkergcc/gcc_nrf51_s310_xxac.ld
+PROJECT_INC_PATH  = -I. -Is310_nrf51422_2.0.0/s310_nrf51422_2.0.0_API/include/ -Ihal/ -Icmsis/
 PROJECT_LIB_PATHS = -L.
 PROJECT_OUTPUT = _build/
 
