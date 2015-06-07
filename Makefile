@@ -27,7 +27,7 @@ CC       = $(GCC_BIN)arm-none-eabi-gcc
 CPP      = $(GCC_BIN)arm-none-eabi-g++
 LD       = $(GCC_BIN)arm-none-eabi-gcc
 OBJCOPY  = $(GCC_BIN)arm-none-eabi-objcopy
-SIZE	 = $(GCC_BIN)arm-none-eabi-size
+SIZE	   = $(GCC_BIN)arm-none-eabi-size
 
 
 ######################################################################################
@@ -41,25 +41,25 @@ CORTEX_M0_CC_FLAGS      = -mthumb -mcpu=cortex-m0 -march=armv6-m
 ######################################################################################
 PROJECT           = demo
 LINKER_SCRIPT     = ./linkergcc/gcc_nrf51_s310_xxac.ld
-PROJECT_INC_PATH  = -I. -Is310_nrf51422_2.0.0/s310_nrf51422_2.0.0_API/include/ -Ihal/ -Icmsis/
+PROJECT_INC_PATH  = -I. -Is310_nrf51422_2.0.0_from_Nordic -Ihal/ -Icmsis/ -Ilinkergcc/
 PROJECT_LIB_PATHS = -L.
-PROJECT_OUTPUT = _build/
+PROJECT_OUTPUT    = _build/
 
 
 ######################################################################################
 # MAKEFILE Pre-Execution
 ######################################################################################
-CFLAGS = -std=gnu99 -c $(CORTEX_MO_CC_FLAGS) $(PROJECT_INC_PATH) -fno-common -fmessage-length=0 -Wall -fno-exceptions -ffunction-sections -fdata-sections -DNRF51
+CFLAGS  = -std=gnu99 -c $(CORTEX_MO_CC_FLAGS) $(PROJECT_INC_PATH) -fno-common -fmessage-length=0 -Wall -fno-exceptions -ffunction-sections -fdata-sections -DNRF51
 LDFLAGS = $(CORTEX_MO_CC_FLAGS)  -Wl,-Map=$(PROJECT_OUTPUT)$(PROJECT).Map -T $(LINKER_SCRIPT)
 
 VPATH = $(PROJECT_SRC_PATH)
-HEX = $(PROJECT_OUTPUT)$(PROJECT).hex
-ELF = $(PROJECT_OUTPUT)$(PROJECT).elf
-BIN = $(PROJECT_OUTPUT)$(PROJECT).bin
+HEX   = $(PROJECT_OUTPUT)$(PROJECT).hex
+ELF   = $(PROJECT_OUTPUT)$(PROJECT).elf
+BIN   = $(PROJECT_OUTPUT)$(PROJECT).bin
 
-SRCS = $(notdir $(wildcard ./*.c))
-OBJS = $(addprefix $(PROJECT_OUTPUT), $(SRCS:.c=.o))
-DEPS = $(addprefix $(PROJECT_OUTPUT), $(SRCS:.c=.d))
+SRCS    = $(notdir $(wildcard ./*.c))
+OBJS    = $(addprefix $(PROJECT_OUTPUT), $(SRCS:.c=.o))
+DEPS    = $(addprefix $(PROJECT_OUTPUT), $(SRCS:.c=.d))
 SRCS_AS += $(notdir $(wildcard ./*.s))
 OBJS_AS = $(addprefix $(PROJECT_OUTPUT), $(SRCS_AS:.s=.o))
 
